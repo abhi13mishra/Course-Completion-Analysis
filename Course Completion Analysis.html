@@ -1,0 +1,24 @@
+<script>
+    const studentsProgress = [
+  { name: "Ramesh", completedLessons: 40, totalLessons: 50 },
+  { name: "Sita", completedLessons: 25, totalLessons: 50 },
+  { name: "Manoj", completedLessons: 30, totalLessons: 60 },
+  { name: "Pooja", completedLessons: 48, totalLessons: 50 },
+  { name: "Anil", completedLessons: 15, totalLessons: 50 }
+];
+let activeStudents = studentsProgress.filter(student => (student.completedLessons / student.totalLessons) >= 0.5);
+
+let studentPercentages = activeStudents.map(student =>({
+  name:student.name,
+  completionPercentage: (student.completedLessons / student.totalLessons)*100
+}));
+
+let averageCompletion = studentPercentages.reduce((sum, student) => sum + student.completionPercentage,0) / studentPercentages.length;
+
+let topstudents = studentPercentages.filter(student => student.completionPercentage > 80);
+
+console.log("Active Students:", activeStudents);
+console.log("Student Completion Percentages:", studentPercentages);
+console.log("Average Completion Percentage:", averageCompletion);
+console.log("Top Students:", topstudents);
+</script>
